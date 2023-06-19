@@ -41,11 +41,23 @@
   	padding:0;
 }
 
+.form-signup {
+	margin: 70px 300px 300px;
+}
+
 .form-signin {
 	margin: 70px 300px 300px;
 }
 
-.form-signup {
+.form-floating {
+	margin-top: 30px;
+}
+
+.form-setting {
+	margin: 70px 300px 300px;
+}
+
+.inventory-create {
 	margin: 70px 300px 300px;
 }
 
@@ -66,4 +78,25 @@
 	margin: 5px 5px 5px 50px;
 }
 
+.recommend-message {
+	margin: 20px;
+	font-size: 15px;
+}
 
+a.edit {
+	color: aqua;
+	text-decoration: none;
+}
+
+a.delete {
+	color: tomato;
+	text-decoration: none;
+}
+
+a.edit:hover {
+	color: mediumblue;
+}
+
+a.delete:hover {
+	color: maroon;
+}

@@ -10,6 +10,7 @@
 </head>
 <body>
     <?php require_once __DIR__.'/header.php'; ?>
+    <?php if(true) { ?>
     <div class="container">
         <div class="inventory-processing d-flex justify-content-center">
             <div class="inventory-search">
@@ -23,7 +24,7 @@
                 </form>
             </div>
             <div class="create-button">
-                <a href="#"><button class="btn btn-primary">食材追加</button></a>
+                <a href="inventoryCreatePage.php"><button class="btn btn-primary">食材追加</button></a>
             </div>
         </div>
         <div class="inventory-list">
@@ -42,19 +43,23 @@
                     <td>リンゴ</td>
                     <td>2023-6-30</td>
                     <td>3</td>
-                    <td><a href="#">編集</a></td>
-                    <td><a href="#">削除</a></td>
+                    <td><a href="inventoryEditPage.php" class="edit">編集</a></td>
+                    <td><a href="#" class="delete">削除</a></td>
                 </tr>
                 <tr>
                     <td>お肉</td>
                     <td>2023-6-17</td>
                     <td>1</td>
-                    <td><a href="#">編集</a></td>
-                    <td><a href="#">削除</a></td>
+                    <td><a href="inventoryEditPage.php" class="edit">編集</a></td>
+                    <td><a href="#" class="delete">削除</a></td>
                 </tr>
             </tbody>
             </table>
         </div>
     </div>
+    <?php } ?>
+    <?php if(false) { ?>
+        <div class="recommend-message">ログインしてください。</div>
+    <?php } ?>
 </body>
 </html>

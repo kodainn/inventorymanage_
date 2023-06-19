@@ -25,7 +25,7 @@
                     <label for="ingredientCount" class="form-label">数量</label>
                     <input type="number" class="form-control" id="ingredientCount" name="ingredientCount" value="1">
                 </div>
-                <button class="w-25 btn btn-primary" type="submit">作成</button>
+                <button class="w-25 btn btn-primary" type="submit">編集確定</button>
             </form>
         </div>
     </div>
