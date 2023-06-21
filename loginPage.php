@@ -15,19 +15,19 @@
             <form>
                 <h1 class="h3 mb-3 fw-normal">ログイン</h1>
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="name1234">
-                    <label for="floatingInput">UserName</label>
+                    <input type="text" class="form-control" id="floatingInput" name="userName" placeholder="name1234">
+                    <label for="floatingInput">ユーザー名</label>
                 </div>
                 <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
+                    <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+                    <label for="floatingPassword">パスワード</label>
                 </div>
             <div class="checkbox mb-3">
                 <label>
                     <input type="checkbox" value="remember-me">ログインしたままにする
                 </label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">ログイン</button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" name="login">ログイン</button>
             </form>
         </main>
     </div>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,28 +9,50 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
+
 <body class="text-center">
-    <?php require_once __DIR__.'/header.php'; ?>
+    <?php require_once __DIR__ . '/header.php'; ?>
     <div class="container">
         <main class="form-signup">
-            <form>
+            <form action="signup.php" method="post">
                 <h1 class="h3 mb-3 fw-normal">サインアップ</h1>
+                <?php if (!empty($_GET['errMsgNum']) && $_GET['errMsgNum'] == 1) { ?>
+                    <div class="alert alert-danger" role="alert">
+                        フォームに空欄があります。
+                    </div>
+                <?php } ?>
+                <?php if (!empty($_GET['errMsgNum']) && $_GET['errMsgNum'] == 2) { ?>
+                    <div class="alert alert-danger" role="alert">
+                        パスワードと再確認用パスワードが一致しません。
+                    </div>
+                <?php } ?>
+                <?php if (!empty($_GET['errMsgNum']) && $_GET['errMsgNum'] == 3) { ?>
+                    <div class="alert alert-danger" role="alert">
+                        そのユーザー名は既に使われています。
+                    </div>
+                <?php } ?>
+
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="name1234">
-                    <label for="floatingInput">UserName</label>
+                    <input type="text" class="form-control" id="floatingInput" name="userName" placeholder="name1234">
+                    <label for="floatingInput">ユーザー名</label>
                 </div>
                 <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
+                    <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+                    <label for="floatingPassword">パスワード</label>
                 </div>
-            <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" value="remember-me">ログインしたままにする
-                </label>
-            </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">登録</button>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" name="rePassword" placeholder="Password">
+                    <label for="floatingPassword">パスワード(再確認)</label>
+                </div>
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me">ログインしたままにする
+                    </label>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary" type="submit" name="signup">登録</button>
             </form>
         </main>
     </div>
 </body>
+
 </html>
