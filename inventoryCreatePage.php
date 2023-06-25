@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once __DIR__.'/header.php';
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -9,7 +13,6 @@
     <title>在庫追加</title>
 </head>
 <body>
-    <?php require_once __DIR__.'/header.php' ?>
     <div class="container">
         <div class="inventory-create">
             <form>

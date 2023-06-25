@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php session_start();
+require_once __DIR__ . '/header.php';
+?>
+<DOCTYPE html>
 <html lang="ja">
 
 <head>
@@ -11,26 +14,20 @@
 </head>
 
 <body class="text-center">
-    <?php require_once __DIR__ . '/header.php'; ?>
     <div class="container">
         <main class="form-signup">
             <form action="signup.php" method="post">
-                <h1 class="h3 mb-3 fw-normal">サインアップ</h1>
-                <?php if (!empty($_GET['errMsgNum']) && $_GET['errMsgNum'] == 1) { ?>
-                    <div class="alert alert-danger" role="alert">
-                        フォームに空欄があります。
-                    </div>
+                <?php if(!empty($_SESSION['formVaridate'])) { ?>
+                    <div class="alert alert-danger" style="text-align: left;" role="alert">
+                        <ul>
+                        <?php foreach($_SESSION['formVaridate'] as $varidate) { ?>
+                            <li><?= $varidate ?></li>
+                        <?php } ?>
+                        </div>
+                        </ul>
+                    <?php unset($_SESSION['formVaridate']); ?>
                 <?php } ?>
-                <?php if (!empty($_GET['errMsgNum']) && $_GET['errMsgNum'] == 2) { ?>
-                    <div class="alert alert-danger" role="alert">
-                        パスワードと再確認用パスワードが一致しません。
-                    </div>
-                <?php } ?>
-                <?php if (!empty($_GET['errMsgNum']) && $_GET['errMsgNum'] == 3) { ?>
-                    <div class="alert alert-danger" role="alert">
-                        そのユーザー名は既に使われています。
-                    </div>
-                <?php } ?>
+                    
 
                 <div class="form-floating">
                     <input type="text" class="form-control" id="floatingInput" name="userName" placeholder="name1234">
@@ -46,7 +43,7 @@
                 </div>
                 <div class="checkbox mb-3">
                     <label>
-                        <input type="checkbox" value="remember-me">ログインしたままにする
+                        <input type="checkbox" value="remember-me" name="loginContinue">ログインしたままにする
                     </label>
                 </div>
                 <button class="w-100 btn btn-lg btn-primary" type="submit" name="signup">登録</button>

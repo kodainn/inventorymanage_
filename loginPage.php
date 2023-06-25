@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once __DIR__.'/header.php';
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -9,7 +13,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body class="text-center">
-    <?php require_once __DIR__.'/header.php'; ?>
     <div class="container">
         <main class="form-signin">
             <form>
@@ -24,7 +27,7 @@
                 </div>
             <div class="checkbox mb-3">
                 <label>
-                    <input type="checkbox" value="remember-me">ログインしたままにする
+                    <input type="checkbox" value="remember-me" name="loginContinue">ログインしたままにする
                 </label>
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit" name="login">ログイン</button>
