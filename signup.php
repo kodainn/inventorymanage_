@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/SQL.php';
+require_once __DIR__ . '/Func.php';
 session_start();
 
 $errMsgs = [];
@@ -44,7 +45,8 @@ if (isset($_POST['signup']))
         try
         {
             $user['userName'] = $_POST['userName'];
-            $password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT); //セキュリティの観点からパスワードはハッシュ化しておく
+            $password = $_POST['password'];
+            $password_hash = password_hash($password, PASSWORD_DEFAULT); //セキュリティの観点からパスワードはハッシュ化しておく
             $user['password'] = $password_hash;
             $loginContinueFlag = isset($_POST['loginContinue']) ? true : false;
             $allUsername = SQL::db_fetch('loginmanagement', 'userdata');
@@ -60,6 +62,7 @@ if (isset($_POST['signup']))
                     break;
                 }
             }
+
             if($formVaridationFlag)
             {
                 $_SESSION['formVaridate'] = $errMsgs;
@@ -68,6 +71,14 @@ if (isset($_POST['signup']))
             }
 
             SQL::db_insert('loginmanagement', 'userdata', $user);
+            $loginStatus = Func::Login($user['userName'], $password, $loginContinueFlag);
+
+            if(!$loginStatus)
+            {
+                array_push($errMsgs, 'ログインに失敗しました。');
+                header('Location: ' . $siginupPageUrl);
+                exit;
+            }
 
             header('Location: ' . $inventoryPageUrl);
         }
