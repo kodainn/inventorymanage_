@@ -1,10 +1,11 @@
 <?php
-session_start();
 require_once __DIR__ . '/SQL.php';
+session_start();
+
 
 class Func
 {
-    static function Login(string $username, string $password, bool $loginContinueFlag): bool
+    public static function login(string $username, string $password, bool $loginContinueFlag): bool
     {
         $success = false;
         $dbuser = SQL::db_fetch('loginmanagement', 'userdata', expression: "username = '{$username}'");
@@ -19,11 +20,18 @@ class Func
                     'password' => $password
                 );
                 $seriCokkieData = json_encode($cookieData);
-                setCookie('inventorymanage', $seriCokkieData, time() + (60 * 60 * 24 * 30)); //一か月間Cookieを保存
+                setcookie('inventorymanage', $seriCokkieData, time() + (60 * 60 * 24 * 30)); //一か月間Cookieを保存
             }
 
             $success = true;
         }
         return $success;
+    }
+
+    public static function logout()
+    {
+        unset($_SESSION['login_user']['username']);
+        session_destroy();
+        setcookie('inventorymanage', '', time() - (60 * 60));
     }
 }

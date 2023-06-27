@@ -1,22 +1,34 @@
 <?php
-// 二次元配列を定義
-$data =
-    array(
-        'username' => 'John',
-        'password' => '1234'
-    );
+session_start();
 
-// 二次元配列をJSON形式にシリアライズ
-$serializedData = json_encode($data);
-
-// Cookieを設定
-setcookie('test', $serializedData, time() + 10);
-
-if (isset($_COOKIE['test'])) {
-    $cookieData = json_decode($_COOKIE['test'], true);
-    $username = $cookieData['username'];
-    $password = $cookieData['password'];
-    echo $username.'<br>'; // John
-    echo $password;
+if (!empty($_POST['session_create']))
+{
+    $_SESSION['session_test'] = 'session_test';
+} elseif (!empty($_POST['delete']))
+{
+    unset($_SESSION['test']);
+    session_destroy();
 }
+
+if(!empty($_POST['cookie_create']))
+{
+    setcookie('cookie_test', 'cookie_test', time() + 60 * 60);
+} else
+{
+    setcookie('cookie_test', '', time() - 60 * 60);
+}
+
 ?>
+
+<form action="Test.php" method="post">
+    <div>
+        <input type="submit" name='session_create' value="セッション生成">
+        <input type="submit" name="session_delete" value="セッション破棄">
+        <?php echo !empty($_SESSION['test']) ? $_SESSION['test'] : 'セッションなし'; ?>
+    </div>
+    <div>
+        <input type="submit" name='cookie_create' value="クッキー生成">
+        <input type="submit" name="cookie_delete" value="クッキー破棄">
+        <?php echo !empty($_COOKIE['cookie_test']) ? $_COOKIE['cookie_test'] : 'クッキーなし'; ?>
+    </div>
+</form>

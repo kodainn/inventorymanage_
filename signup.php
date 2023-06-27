@@ -10,7 +10,7 @@ $inventoryPageUrl = "http://localhost/----/inventoryPage.php";
 
 if (isset($_POST['signup']))
 {
-    if (empty($_POST['userName']) || empty($_POST['password']) || empty($_POST['rePassword']))
+    if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['rePassword']))
     {
         array_push($errMsgs, 'フォームに空欄があります。');
         $formVaridationFlag = true;
@@ -21,7 +21,7 @@ if (isset($_POST['signup']))
         $formVaridationFlag = true;
     }
 
-    if(!preg_match('/^[a-zA-Z0-9]{6,20}$/', $_POST['userName']))
+    if(!preg_match('/^[a-zA-Z0-9]{6,20}$/', $_POST['username']))
     {
         array_push($errMsgs, 'ユーザー名は６文字以上２０文字以下の英数字です。');
         $formVaridationFlag = true;
@@ -40,11 +40,11 @@ if (isset($_POST['signup']))
         exit;
     }
 
-    if (!empty($_POST['userName']) && !empty($_POST['password']) && !empty($_POST['rePassword']))
+    if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['rePassword']))
     {
         try
         {
-            $user['userName'] = $_POST['userName'];
+            $user['username'] = $_POST['username'];
             $password = $_POST['password'];
             $password_hash = password_hash($password, PASSWORD_DEFAULT); //セキュリティの観点からパスワードはハッシュ化しておく
             $user['password'] = $password_hash;
@@ -55,7 +55,7 @@ if (isset($_POST['signup']))
             //データベースのusernameと一致したらメッセージを表示
             foreach ($allUsername as $u)
             {
-                if ($user['userName'] === $u['username'])
+                if ($user['username'] === $u['username'])
                 {
                     array_push($errMsgs, 'そのユーザー名は既に使われています。');
                     $formVaridationFlag = true;
@@ -71,7 +71,7 @@ if (isset($_POST['signup']))
             }
 
             SQL::db_insert('loginmanagement', 'userdata', $user);
-            $loginStatus = Func::Login($user['userName'], $password, $loginContinueFlag);
+            $loginStatus = Func::login($user['username'], $password, $loginContinueFlag);
 
             if(!$loginStatus)
             {
