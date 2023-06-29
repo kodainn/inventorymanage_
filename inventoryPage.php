@@ -1,6 +1,8 @@
 <?php
 session_start();
+require_once __DIR__.'/init.php';
 require_once __DIR__.'/header.php';
+require_once __DIR__.'/inventory.php';
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -13,7 +15,7 @@ require_once __DIR__.'/header.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-    <?php if(true) { ?>
+    <?php if(!empty($_SESSION['login_user']['username'])) { ?>
     <div class="container">
         <div class="inventory-processing d-flex justify-content-center">
             <div class="inventory-search">
@@ -30,6 +32,7 @@ require_once __DIR__.'/header.php';
                 <a href="inventoryCreatePage.php"><button class="btn btn-primary">食材追加</button></a>
             </div>
         </div>
+        <!--
         <div class="inventory-list">
         <table class="table table-hover">
             <thead>
@@ -59,9 +62,10 @@ require_once __DIR__.'/header.php';
             </tbody>
             </table>
         </div>
+        -->
+        
     </div>
-    <?php } ?>
-    <?php if(false) { ?>
+    <?php } else { ?>
         <div class="recommend-message">ログインしてください。</div>
     <?php } ?>
 </body>

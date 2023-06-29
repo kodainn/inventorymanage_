@@ -1,7 +1,7 @@
 <?php
+session_start();
 require_once __DIR__ . '/SQL.php';
 require_once __DIR__ . '/Func.php';
-session_start();
 
 $errMsgs = [];
 $formVaridationFlag = false;
@@ -70,7 +70,7 @@ if (isset($_POST['signup']))
                 exit;
             }
 
-            SQL::db_insert('loginmanagement', 'userdata', $user);
+            SQL::db_insert('inventorymanage', 'userdata', $user);
             $loginStatus = Func::login($user['username'], $password, $loginContinueFlag);
 
             if(!$loginStatus)

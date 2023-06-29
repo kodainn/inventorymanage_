@@ -1,6 +1,7 @@
 <?php session_start();
 require_once __DIR__ . '/header.php';
 ?>
+
 <DOCTYPE html>
     <html lang="ja">
 
@@ -28,7 +29,7 @@ require_once __DIR__ . '/header.php';
                         <?php unset($_SESSION['formVaridate']); ?>
                     <?php } ?>
 
-
+                    <h1 class="h3 mb-3 fw-normal">サインアップ</h1>
                     <div class="form-floating">
                         <input type="text" class="form-control" id="floatingInput" name="username" placeholder="name1234">
                         <label for="floatingInput">ユーザー名</label>

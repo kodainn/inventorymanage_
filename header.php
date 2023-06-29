@@ -15,16 +15,14 @@
                 <li><a href="settingPage.php" class="nav-link px-2 text-white">設定</a></li>
             </ul>
 
-            <?php if (true) { ?>
+            <?php if (empty($_SESSION['login_user']['username'])) { ?>
                 <div class="text-end">
                     <a href="loginPage.php"><button type="button" class="btn btn-outline-light me-2">ログイン</button></a>
                     <a href="signupPage.php"><button type="button" class="btn btn-warning">サインアップ</button></a>
                 </div>
-            <?php } ?>
-
-            <?php if (false) { ?>
+            <?php } else { ?>
                 <div class="text-end">
-                    <button type="button" class="btn btn-outline-light me-2">ログアウト</button>
+                    <a href="logout.php"><button type="button" class="btn btn-outline-light me-2">ログアウト</button></a>
                 </div>
             <?php } ?>
         </div>

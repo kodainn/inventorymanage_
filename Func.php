@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/SQL.php';
-session_start();
 
 
 class Func
@@ -8,7 +7,7 @@ class Func
     public static function login(string $username, string $password, bool $loginContinueFlag): bool
     {
         $success = false;
-        $dbuser = SQL::db_fetch('loginmanagement', 'userdata', expression: "username = '{$username}'");
+        $dbuser = SQL::db_fetch('inventorymanage', 'userdata', expression: "username = '{$username}'");
         if(!empty($dbuser[0]['username']) && password_verify($password, $dbuser[0]['password']))
         {
             session_regenerate_id(true);

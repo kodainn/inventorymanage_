@@ -1,6 +1,6 @@
 <?php
-session_start();
 require_once __DIR__.'/header.php';
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="ja">

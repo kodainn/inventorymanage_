@@ -1,7 +1,7 @@
 <?php
+session_start();
 require_once __DIR__ . '/SQL.php';
 require_once __DIR__ . '/Func.php';
-session_start();
 
 $errMsg = '';
 $formVaridationFlag = false;

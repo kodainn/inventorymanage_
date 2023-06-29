@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once __DIR__.'/init.php';
 require_once __DIR__ . '/header.php';
 ?>
 <!DOCTYPE html>
@@ -15,7 +16,7 @@ require_once __DIR__ . '/header.php';
 </head>
 
 <body>
-    <?php if(true) { ?>
+    <?php if(!empty($_SESSION['login_user']['username'])) { ?>
     <div class="container">
         <div class="form-setting">
             <form>
@@ -35,8 +36,7 @@ require_once __DIR__ . '/header.php';
             </form>
         </div>
     </div>
-    <?php } ?>
-    <?php if(false) { ?>
+    <?php } else { ?>
         <div class="recommend-message">ログインしてください。</div>
     <?php } ?>
 </body>
