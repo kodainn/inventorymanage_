@@ -7,7 +7,8 @@ class Func
     public static function login(string $username, string $password, bool $loginContinueFlag): bool
     {
         $success = false;
-        $dbuser = SQL::db_fetch('inventorymanage', 'userdata', expression: "username = '{$username}'");
+        $expression = "username = '{$username}'";
+        $dbuser = SQL::db_fetch('inventorymanage', 'userdata', $expression);
         if(!empty($dbuser[0]['username']) && password_verify($password, $dbuser[0]['password']))
         {
             session_regenerate_id(true);

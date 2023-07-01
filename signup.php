@@ -2,14 +2,13 @@
 session_start();
 require_once __DIR__ . '/SQL.php';
 require_once __DIR__ . '/Func.php';
+require_once __DIR__ . '/url.php';
 
-$errMsgs = [];
-$formVaridationFlag = false;
-$siginupPageUrl = "http://localhost/----/signupPage.php";
-$inventoryPageUrl = "http://localhost/----/inventoryPage.php";
 
 if (isset($_POST['signup']))
 {
+    $errMsgs = [];
+    $formVaridationFlag = false;
     if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['rePassword']))
     {
         array_push($errMsgs, 'フォームに空欄があります。');
@@ -36,7 +35,7 @@ if (isset($_POST['signup']))
     if($formVaridationFlag)
     {
         $_SESSION['formVaridate'] = $errMsgs;
-        header('Location: ' . $siginupPageUrl);
+        header('Location: ' . $signupPageUrl);
         exit;
     }
 
@@ -66,7 +65,7 @@ if (isset($_POST['signup']))
             if($formVaridationFlag)
             {
                 $_SESSION['formVaridate'] = $errMsgs;
-                header('Location: ' . $siginupPageUrl);
+                header('Location: ' . $signupPageUrl);
                 exit;
             }
 
@@ -76,7 +75,7 @@ if (isset($_POST['signup']))
             if(!$loginStatus)
             {
                 array_push($errMsgs, 'ログインに失敗しました。');
-                header('Location: ' . $siginupPageUrl);
+                header('Location: ' . $signupPageUrl);
                 exit;
             }
 

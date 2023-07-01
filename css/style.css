@@ -83,8 +83,8 @@
 	font-size: 15px;
 }
 
-a.edit {
-	color: aqua;
+a.update {
+	color: cornflowerblue;
 	text-decoration: none;
 }
 
@@ -93,7 +93,7 @@ a.delete {
 	text-decoration: none;
 }
 
-a.edit:hover {
+a.update:hover {
 	color: mediumblue;
 }
 

@@ -2,14 +2,12 @@
 session_start();
 require_once __DIR__ . '/SQL.php';
 require_once __DIR__ . '/Func.php';
+require_once __DIR__ . '/url.php';
 
-$errMsg = '';
-$formVaridationFlag = false;
-$loginPageUrl = "http://localhost/----/loginPage.php";
-$inventoryPageUrl = "http://localhost/----/inventoryPage.php";
 
 if (isset($_POST['login']))
 {
+    $formVaridationFlag = false;
     if (empty($_POST['username']) || empty($_POST['password']))
     {
         $errMsg = 'フォームに空欄があります。';
