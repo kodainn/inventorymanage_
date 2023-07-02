@@ -17,7 +17,7 @@ require_once __DIR__ . '/inventoryCreate.php';
 </head>
 
 <body>
-    <?php if (!empty($_SESSION['login_user']['username'])) { ?>
+    <?php if (!empty($_SESSION['login_user']['userid'])) { ?>
     <div class="container">
         <div class="inventory-create">
             <form action="<?=$inventoryCreateUrl?>" method="post">

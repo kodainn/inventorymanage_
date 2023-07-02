@@ -19,7 +19,7 @@ require_once __DIR__ . '/profileUpdate.php';
 </head>
 
 <body>
-    <?php if (!empty($_SESSION['login_user']['username'])) { ?>
+    <?php if (!empty($_SESSION['login_user']['userid'])) { ?>
         <div class="container">
             <div class="form-setting">
                 <form action="<?=$profileUpdateUrl?>" method="post">

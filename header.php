@@ -16,7 +16,7 @@
                 <li><a href="<?=$profilePageUrl?>" class="nav-link px-2 text-white">プロフィール</a></li>
             </ul>
 
-            <?php if (empty($_SESSION['login_user']['username'])) { ?>
+            <?php if (empty($_SESSION['login_user']['userid'])) { ?>
                 <div class="text-end">
                     <a href="<?=$loginPageUrl?>"><button type="button" class="btn btn-outline-light me-2">ログイン</button></a>
                     <a href="<?=$signupPageUrl?>"><button type="button" class="btn btn-warning">サインアップ</button></a>

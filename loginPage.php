@@ -22,7 +22,9 @@ require_once __DIR__ . '/url.php';
                 <?php if (!empty($_SESSION['formVaridate'])) { ?>
                     <div class="alert alert-danger" style="text-align: left;" role="alert">
                         <ul>
-                            <li><?= $_SESSION['formVaridate'] ?></li>
+                            <?php foreach ($_SESSION['formVaridate'] as $varidate) { ?>
+                                <li><?= $varidate ?></li>
+                            <?php } ?>
                         </ul>
                     </div>
                     <?php unset($_SESSION['formVaridate']); ?>

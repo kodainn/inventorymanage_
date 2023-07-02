@@ -18,10 +18,20 @@ require_once __DIR__ . '/h.php';
 </head>
 
 <body>
-    <?php if (!empty($_SESSION['login_user']['username'])) { ?>
+    <?php if (!empty($_SESSION['login_user']['userid'])) { ?>
     <div class="container">
         <div class="inventory-create">
             <form action="<?=$inventoryUpdateUrl?>" method="post">
+                <?php if (!empty($_SESSION['formVaridate'])) { ?>
+                    <div class="alert alert-danger" style="text-align: left;" role="alert">
+                        <ul>
+                            <?php foreach ($_SESSION['formVaridate'] as $varidate) { ?>
+                                <li><?= $varidate ?></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                    <?php unset($_SESSION['formVaridate']); ?>
+                <?php } ?>
                 <input type="hidden" name="data" value="<?=$inventoryId?>">
                 <div class="mb-3">
                     <label for="ingredientName" class="form-label">食材名</label>

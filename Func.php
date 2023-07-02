@@ -29,7 +29,7 @@ class Func
 
     public static function logout()
     {
-        unset($_SESSION['login_user']['username']);
+        unset($_SESSION['login_user']);
         session_destroy();
         setcookie('inventorymanage', '', time() - (60 * 60));
     }

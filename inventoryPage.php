@@ -20,7 +20,7 @@ require_once __DIR__ . '/javascript.php';
 </head>
 
 <body>
-    <?php if (!empty($_SESSION['login_user']['username'])) { ?>
+    <?php if (!empty($_SESSION['login_user']['userid'])) { ?>
         <div class="container">
             <div class="inventory-processing d-flex justify-content-center">
                 <div class="inventory-search">
