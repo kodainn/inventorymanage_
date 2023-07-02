@@ -24,7 +24,7 @@ require_once __DIR__ . '/javascript.php';
         <div class="container">
             <div class="inventory-processing d-flex justify-content-center">
                 <div class="inventory-search">
-                    <form class="d-flex" action="<?=$_SERVER['PHP_SELF']?>" id="search-form">
+                    <form class="d-flex" action="<?=$inventoryPageUrl?>" id="search-form">
                         <div class="search-box">
                             <input class="form-control" type="text" placeholder="検索ワードを入力して" aria-label="Search" id="search-box">
                         </div>
@@ -34,11 +34,15 @@ require_once __DIR__ . '/javascript.php';
                     </form>
                 </div>
                 <div class="create-button">
-                    <a href="<?= $inventoryCreatePageUrl ?>"><button class="btn btn-primary">食材追加</button></a>
+                    <a href="<?=$inventoryCreatePageUrl?>"><button class="btn btn-primary">食材追加</button></a>
+                </div>
+                <div class="delete-button">
+                    <button class="btn btn-danger">全て削除</button>
                 </div>
             </div>
 
-            <div class="inventory-list">
+            <div class="inventory-list" style="margin-bottom: 200px;">
+                
                 <table class="table table-hover" id="inventory-table">
                     <thead>
                         <tr>
@@ -52,7 +56,7 @@ require_once __DIR__ . '/javascript.php';
                     </thead>
                     <tbody>
                         <?php foreach ($inventoryData as $v) { ?>
-                            <tr class="<?= deadlineCheck($v['deadline']) ?>">
+                            <tr class="<?=Func::deadlineCheck($v['deadline'])?>">
                                 <td><?= h($v['ingredientname']) ?></td>
                                 <td><?= h($v['category']) ?></td>
                                 <td><?= h($v['amount']) ?></td>

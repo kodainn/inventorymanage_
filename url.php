@@ -11,7 +11,10 @@ $inventoryUpdatePageUrl = "http://localhost/----/inventoryUpdatePage.php";
 $loginUrl = "http://localhost/----/login.php";
 $loginPageUrl = "http://localhost/----/loginPage.php";
 $logoutUrl = "http://localhost/----/logout.php";
-$settingPageUrl = "http://localhost/----/settingPage.php";
+$profileUrl = "http://localhost/----/profile.php";
+$profilePageUrl = "http://localhost/----/profilePage.php";
+$profileUpdateUrl = "http://localhost/----/profileUpdate.php";
+$profileUpdatePageUrl = "http://localhost/----/profileUpdatePage.php";
 $signupUrl = "http://localhost/----/signup.php";
 $signupPageUrl = "http://localhost/----/signupPage.php";
 

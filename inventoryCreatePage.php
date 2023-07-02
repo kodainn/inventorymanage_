@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once __DIR__ . '/url.php';
 require_once __DIR__ . '/header.php';
 require_once __DIR__ . '/inventoryCreate.php';
 ?>
@@ -16,9 +17,10 @@ require_once __DIR__ . '/inventoryCreate.php';
 </head>
 
 <body>
+    <?php if (!empty($_SESSION['login_user']['username'])) { ?>
     <div class="container">
         <div class="inventory-create">
-            <form action="inventoryCreate.php" method="post">
+            <form action="<?=$inventoryCreateUrl?>" method="post">
                 <?php if (!empty($_SESSION['formVaridate'])) { ?>
                     <div class="alert alert-danger" style="text-align: left;" role="alert">
                         <ul>
@@ -59,6 +61,9 @@ require_once __DIR__ . '/inventoryCreate.php';
             </form>
         </div>
     </div>
+    <?php } else {?>
+        <div class="recommend-message">ログインしてください。</div>
+    <?php } ?>
 </body>
 
 </html>

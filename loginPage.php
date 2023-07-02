@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/header.php';
+require_once __DIR__ . '/url.php';
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -17,7 +18,7 @@ require_once __DIR__ . '/header.php';
 <body class="text-center">
     <div class="container">
         <main class="form-signin">
-            <form action="login.php" method="post">
+            <form action="<?=$loginUrl?>" method="post">
                 <?php if (!empty($_SESSION['formVaridate'])) { ?>
                     <div class="alert alert-danger" style="text-align: left;" role="alert">
                         <ul>

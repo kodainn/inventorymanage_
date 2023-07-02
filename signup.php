@@ -48,7 +48,7 @@ if (isset($_POST['signup']))
             $password_hash = password_hash($password, PASSWORD_DEFAULT); //セキュリティの観点からパスワードはハッシュ化しておく
             $user['password'] = $password_hash;
             $loginContinueFlag = isset($_POST['loginContinue']) ? true : false;
-            $allUsername = SQL::db_fetch('loginmanagement', 'userdata');
+            $allUsername = SQL::db_fetchAll('loginmanagement', 'userdata');
 
 
             //データベースのusernameと一致したらメッセージを表示

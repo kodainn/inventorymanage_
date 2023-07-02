@@ -66,6 +66,10 @@
 
 }
 
+.inventory-list {
+	margin-bottom: 200px;
+}
+
 .search-box {
 	margin: 5px;
 }
@@ -75,6 +79,10 @@
 }
 
 .create-button {
+	margin: 5px 5px 5px 50px;
+}
+
+.delete-button {
 	margin: 5px 5px 5px 50px;
 }
 

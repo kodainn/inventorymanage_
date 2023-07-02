@@ -9,12 +9,11 @@ class Func
         $success = false;
         $expression = "username = '{$username}'";
         $dbuser = SQL::db_fetch('inventorymanage', 'userdata', $expression);
-        if(!empty($dbuser[0]['username']) && password_verify($password, $dbuser[0]['password']))
-        {
+        if (!empty($dbuser['username']) && password_verify($password, $dbuser['password'])) {
             session_regenerate_id(true);
-            $_SESSION['login_user']['username'] = $dbuser[0]['username'];
-            if($loginContinueFlag)
-            {
+            $_SESSION['login_user']['userid'] = $dbuser['userid'];
+            $_SESSION['login_user']['username'] = $dbuser['username'];
+            if ($loginContinueFlag) {
                 $cookieData = array(
                     'username' => $username,
                     'password' => $password
@@ -33,5 +32,23 @@ class Func
         unset($_SESSION['login_user']['username']);
         session_destroy();
         setcookie('inventorymanage', '', time() - (60 * 60));
+    }
+
+    public static function deadlineCheck($date)
+    {
+        $rtn = '';
+        $safetyline = date("Y-m-d", strtotime(date('') . "+7 days"));
+        $warningline = date("Y-m-d", strtotime(date('') . "+3 days"));
+        $deadline = date("Y-m-d", strtotime(date('') . "-1 days"));
+        if ($date > $safetyline) {
+            $rtn = 'table-primary';
+        } else if ($date > $warningline) {
+            $rtn = 'table-success';
+        } else if ($date > $deadline) {
+            $rtn = 'table-danger';
+        } else {
+            $rtn = 'table-secondary';
+        }
+        return $rtn;
     }
 }

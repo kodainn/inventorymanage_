@@ -10,7 +10,18 @@ class SQL
         return new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     }
 
-    public static function db_fetch(string $dbname, string $tblname, string $expression = "1", int $limit = 0, string $join = "")
+    public static function db_fetch(string $dbname, string $tblname, string $expression = "1", string $join = "")
+    {
+        $rtn = '';
+        $pdo = SQL::db_connect($dbname);
+        $fetchSql = "select * from $tblname {$join} where $expression";
+        $stmt = $pdo->prepare($fetchSql);
+        $stmt->execute();
+        $rtn = $stmt->fetch();
+        return $rtn;
+    }
+
+    public static function db_fetchAll(string $dbname, string $tblname, string $expression = "1", int $limit = 0, string $join = "")
     {
         $rtn = '';
         $pdo = SQL::db_connect($dbname);

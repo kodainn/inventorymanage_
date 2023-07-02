@@ -12,3 +12,12 @@ if(!empty($_SESSION['login_user']['username']) && !empty($_GET['data']))
     header("Location: {$inventoryPageUrl}");
     exit;
 }
+
+if(!empty($_SESSION['login_user']['username']) && empty($_GET['data']))
+{
+    $inventoryId = $_GET['data'];
+    $username = $_SESSION['login_user']['username'];
+    SQL::db_delete('inventorymanage', 'inventory');
+    header("Location: {$inventoryPageUrl}");
+    exit;
+}
