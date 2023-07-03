@@ -25,12 +25,11 @@ if(!empty($_SESSION['login_user']['userid']) && isset($_POST['inventory_update']
         {
             $_SESSION['formVaridate'] = $errMsgs;
             $query = http_build_query([
-                'ingredientname' => urlencode($ingredientname),
-                'amount' => $amount,
-                'deadline' => $deadline,
-                'data' => $data
+                'ingredientname' => $_POST['ingredientname'],
+                'amount' => $_POST['amount'],
+                'deadline' => $_POST['deadline'],
+                'data' => $_POST['data']
             ]);
-            var_dump($query); exit;
             header("Location: {$inventoryUpdatePageUrl}?{$query}");
             exit;
         }

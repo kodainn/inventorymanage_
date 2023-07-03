@@ -5,7 +5,13 @@ require_once __DIR__ . '/SQL.php';
 
 if(!empty($_SESSION['login_user']['userid']))
 {
-    $loginUser = $_SESSION['login_user']['userid'];
-    $expression = "userid = '{$loginUser}'";
-    $userdata = SQL::db_fetch('inventorymanage', 'userdata', $expression);
+    try
+    {
+        $loginUser = $_SESSION['login_user']['userid'];
+        $expression = "userid = '{$loginUser}'";
+        $userdata = SQL::db_fetch('inventorymanage', 'userdata', $expression);
+    } catch(PDOException $e)
+    {
+        echo 'データベースエラー' . $e->getMessage();
+    }
 }

@@ -1,5 +1,6 @@
 <?php
-$homePageUrl = "http://localhost/----/homePage.php";
+$recipeUrl = "http://localhost/----/recipe.php";
+$recipePageUrl = "http://localhost/----/recipePage.php";
 $loginPageUrl = "http://localhost/----/loginPage.php";
 $signupPageUrl = "http://localhost/----/signupPage.php";
 $inventoryPageUrl = "http://localhost/----/inventoryPage.php";

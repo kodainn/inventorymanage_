@@ -74,12 +74,18 @@ class Varidate
         $rtn = false;
         if(!empty($checkUsername))
         {
-            $expression = "username = '{$checkUsername}'";
-            $dbUsername = SQL::db_fetchAll('inventorymanage', 'userdata', $expression);
-            if(!empty($dbUsername))
+            try
             {
-                $rtn = true;
-                array_push($errMsgs, 'そのユーザー名はすでに使われています。');
+                $expression = "username = '{$checkUsername}'";
+                $dbUsername = SQL::db_fetchAll('inventorymanage', 'userdata', $expression);
+                if(!empty($dbUsername))
+                {
+                    $rtn = true;
+                    array_push($errMsgs, 'そのユーザー名はすでに使われています。');
+                }
+            } catch(PDOException $e)
+            {
+                echo 'データベースエラー' . $e->getMessage();
             }
         }
         return $rtn;

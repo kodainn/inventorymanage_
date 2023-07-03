@@ -34,7 +34,7 @@ require_once __DIR__ . '/javascript.php';
                     </form>
                 </div>
                 <div class="create-button">
-                    <a href="<?=$inventoryCreatePageUrl?>"><button class="btn btn-primary">食材追加</button></a>
+                    <a href="<?=$inventoryCreatePageUrl?>"><button class="btn btn-primary">在庫追加</button></a>
                 </div>
                 <div class="delete-button">
                     <button class="btn btn-danger">全て削除</button>
@@ -42,7 +42,6 @@ require_once __DIR__ . '/javascript.php';
             </div>
 
             <div class="inventory-list" style="margin-bottom: 200px;">
-                
                 <table class="table table-hover" id="inventory-table">
                     <thead>
                         <tr>

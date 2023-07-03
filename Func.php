@@ -41,9 +41,9 @@ class Func
         $warningline = date("Y-m-d", strtotime(date('') . "+3 days"));
         $deadline = date("Y-m-d", strtotime(date('') . "-1 days"));
         if ($date > $safetyline) {
-            $rtn = 'table-primary';
-        } else if ($date > $warningline) {
             $rtn = 'table-success';
+        } else if ($date > $warningline) {
+            $rtn = 'table-warning';
         } else if ($date > $deadline) {
             $rtn = 'table-danger';
         } else {
