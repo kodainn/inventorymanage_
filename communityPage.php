@@ -20,7 +20,8 @@ require_once __DIR__ . '/communityJS.php';
 </head>
 
 <body>
-    <?php //if (!empty($_SESSION['login_user']['user_id'])) { ?>
+    <?php //if (!empty($_SESSION['login_user']['user_id'])) { 
+    ?>
     <div class="container">
         <div class="processing d-flex justify-content-center">
             <div class="search">
@@ -42,20 +43,22 @@ require_once __DIR__ . '/communityJS.php';
                 <a href="<?= $communityCreatePageUrl ?>"><button class="btn btn-primary">コミュニティ作成</button></a>
             </div>
         </div>
+        <?php foreach ($communitydata as $v) { ?>
         <div class="card comunity-card" style="width: 70%;">
             <div class="row no-gutters align-items-center">
                 <div class="col-md-4">
-                    <img src="community_icon/no_image.jpg" class="card-img" alt="...">
+                    <img src="<?= !empty($v['imagepath']) ? $v['imagepath'] : 'community_icon\no_image.jpg' ?>" class="card-img" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">Card Title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <h5 class="card-title"><?= h($v['title']) ?></h5>
+                        <p class="card-text"><?= h($v['description']) ?></p>
                         <a href="#">コミュニティに入る</a>
                     </div>
                 </div>
             </div>
         </div>
+        <?php } ?>
     </div>
     <?php // } else {
     ?>

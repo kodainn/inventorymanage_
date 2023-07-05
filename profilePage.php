@@ -23,7 +23,7 @@ require_once __DIR__ . '/profile.php';
             <div class="form-wrap">
                 <div class="mb-3">
                     <p>アイコン</p>
-                    <img src="<?= !empty($userdata['imagepath']) ? $userdata['imagepath'] : 'user_icon\init_icon.png'?>" class="rounded-circle" width="100" height="100" alt="アイコン">
+                    <img src="<?=!empty($userdata['imagepath']) ? $userdata['imagepath'] : 'user_icon\init_icon.png'?>" class="rounded-circle" width="100" height="100" alt="アイコン">
                 </div>
                 <hr>
                 <div class="mb-3">
