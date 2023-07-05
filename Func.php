@@ -11,7 +11,7 @@ class Func
         $dbuser = SQL::db_fetch('inventorymanage', 'userdata', $expression);
         if (!empty($dbuser['username']) && password_verify($password, $dbuser['password'])) {
             session_regenerate_id(true);
-            $_SESSION['login_user']['userid'] = $dbuser['userid'];
+            $_SESSION['login_user']['user_id'] = $dbuser['user_id'];
             $_SESSION['login_user']['username'] = $dbuser['username'];
             if ($loginContinueFlag) {
                 $cookieData = array(

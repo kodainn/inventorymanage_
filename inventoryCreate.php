@@ -5,7 +5,7 @@ require_once __DIR__ . '/url.php';
 require_once __DIR__ . '/Varidate.php';
 
 
-if(isset($_POST['inventory_create']))
+if(isset($_POST['inventory_create']) && $_SESSION['login_user']['user_id'])
 {
     try
     {
@@ -24,7 +24,7 @@ if(isset($_POST['inventory_create']))
         }
 
         $inventory['ingredientname'] = $_POST['ingredientname'];
-        $inventory['userid'] = $_SESSION['login_user']['userid'];
+        $inventory['user_id'] = $_SESSION['login_user']['user_id'];
         $inventory['category'] = $_POST['category'];
         $inventory['deadline'] = $_POST['deadline'];
         $inventory['amount'] = $_POST['amount'];

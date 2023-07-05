@@ -11,12 +11,13 @@
                 </svg>
             </a>
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="<?=$communityPageUrl?>" class="nav-link px-2 text-white">コミュニティ</a></li>
                 <li><a href="<?=$recipePageUrl?>" class="nav-link px-2 text-white">レシピ</a></li>
                 <li><a href="<?=$inventoryPageUrl?>" class="nav-link px-2 text-white">在庫</a></li>
                 <li><a href="<?=$profilePageUrl?>" class="nav-link px-2 text-white">プロフィール</a></li>
             </ul>
 
-            <?php if (empty($_SESSION['login_user']['userid'])) { ?>
+            <?php if (empty($_SESSION['login_user']['user_id'])) { ?>
                 <div class="text-end">
                     <a href="<?=$loginPageUrl?>"><button type="button" class="btn btn-outline-light me-2">ログイン</button></a>
                     <a href="<?=$signupPageUrl?>"><button type="button" class="btn btn-warning">サインアップ</button></a>

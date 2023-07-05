@@ -53,7 +53,7 @@ class Varidate
         if(empty($checkField))
         {
             $rtn = true;
-            array_push($errMsgs, "{$word}が空欄です。");
+            array_push($errMsgs, "{$word}は必須です。");
         }
         return $rtn;
     }
@@ -90,5 +90,4 @@ class Varidate
         }
         return $rtn;
     }
-    
 }

@@ -5,6 +5,7 @@ require_once __DIR__ . '/url.php';
 require_once __DIR__ . '/init.php';
 require_once __DIR__ . '/header.php';
 require_once __DIR__ . '/profileUpdate.php';
+require_once __DIR__ . '/profileJS.php';
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -19,17 +20,32 @@ require_once __DIR__ . '/profileUpdate.php';
 </head>
 
 <body>
-    <?php if (!empty($_SESSION['login_user']['userid'])) { ?>
+    <?php if (!empty($_SESSION['login_user']['user_id'])) { ?>
         <div class="container">
-            <div class="form-setting">
-                <form action="<?=$profileUpdateUrl?>" method="post">
+            <div class="form-wrap">
+                <form action="<?=$profileUpdateUrl?>" method="post" enctype="multipart/form-data">
+                    <?php if (!empty($_SESSION['formVaridate'])) { ?>
+                        <div class="alert alert-danger" style="text-align: left;" role="alert">
+                            <ul>
+                                <?php foreach ($_SESSION['formVaridate'] as $varidate) { ?>
+                                    <li><?= $varidate ?></li>
+                                <?php } ?>
+                            </ul>
+                        </div>
+                        <?php unset($_SESSION['formVaridate']); ?>
+                    <?php } ?>
                     <div class="mb-3">
-                        <label for="username" class="form-label">ユーザー名</label>
+                        <p>アイコン</p>
+                        <label for="formFileSm" class="form-label"><img src="<?= !empty($imagepath) ? $imagepath : (!empty($userdata['imagepath']) ? $userdata['imagepath'] :'user_icon/init_icon.png')?>" id="preview" class="rounded-circle" width="100" height="100" alt="アイコン"></label>
+                        <input class="form-control form-control-sm" id="formFileSm" type="file" name="image" onchange="previewImage(event)">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">ユーザー名(必須)</label>
                         <input type="text" class="form-control" id="username" name="username" value="<?= !empty($userdata['username']) ? h($userdata['username']) : '' ?>">
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">パスワード</label>
-                        <input type="password" class="form-control" id="password" name="password" value="" placeholder="パスワードのみ空欄だと更新しません。">
+                        <input type="password" class="form-control" id="password" name="password" value="">
                     </div>
                     <div class="mb-3">
                         <label for="nickname" class="form-label">ニックネーム</label>

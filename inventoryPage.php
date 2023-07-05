@@ -5,7 +5,7 @@ require_once __DIR__ . '/init.php';
 require_once __DIR__ . '/header.php';
 require_once __DIR__ . '/inventory.php';
 require_once __DIR__ . '/url.php';
-require_once __DIR__ . '/javascript.php';
+require_once __DIR__ . '/inventoryJS.php';
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -20,13 +20,22 @@ require_once __DIR__ . '/javascript.php';
 </head>
 
 <body>
-    <?php if (!empty($_SESSION['login_user']['userid'])) { ?>
+    <?php if (!empty($_SESSION['login_user']['user_id'])) { ?>
         <div class="container">
-            <div class="inventory-processing d-flex justify-content-center">
-                <div class="inventory-search">
+            <div class="processing d-flex justify-content-center">
+                <div class="search">
                     <form class="d-flex" action="<?=$inventoryPageUrl?>" id="search-form">
-                        <div class="search-box">
-                            <input class="form-control" type="text" placeholder="検索ワードを入力して" aria-label="Search" id="search-box">
+                        <div class="search-box d-flex">
+                            <input class="form-control" type="text" aria-label="Search" id="search-text">
+                            <select class="form-select form-select-sm search-pulldown" aria-label=".form-select-sm example" id="search-pulldown">
+                                <option selected value="">-------------</option>
+                                <option value="肉類">肉類</option>
+                                <option value="野菜">野菜</option>
+                                <option value="魚介類">魚介類</option>
+                                <option value="卵・乳酸品">卵・乳酸品</option>
+                                <option value="調味料">調味料</option>
+                                <option value="その他">その他</option>
+                            </select>
                         </div>
                         <div class="search-button">
                             <button type="submit" class="btn btn-outline-info">検索</button>

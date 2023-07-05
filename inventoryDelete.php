@@ -3,13 +3,13 @@ isset($_SESSION) ? '' : session_start();
 require_once __DIR__ . '/SQL.php';
 require_once __DIR__ . '/url.php';
 
-if(!empty($_SESSION['login_user']['userid']) && !empty($_GET['data']))
+if(!empty($_SESSION['login_user']['user_id']) && !empty($_GET['data']))
 {
     try
     {
         $inventoryId = $_GET['data'];
-        $userid = $_SESSION['login_user']['userid'];
-        $expression = "inventory_id = {$inventoryId} and userid = '{$userid}'";
+        $user_id = $_SESSION['login_user']['user_id'];
+        $expression = "inventory_id = {$inventoryId} and user_id = '{$user_id}'";
         SQL::db_delete('inventorymanage', 'inventory', $expression);
         header("Location: {$inventoryPageUrl}");
     exit;
@@ -19,13 +19,13 @@ if(!empty($_SESSION['login_user']['userid']) && !empty($_GET['data']))
     }
 }
 
-if(!empty($_SESSION['login_user']['userid']) && empty($_GET['data']))
+if(!empty($_SESSION['login_user']['user_id']) && empty($_GET['data']))
 {
     try
     {
         $inventoryId = $_GET['data'];
-        $userid = $_SESSION['login_user']['userid'];
-        $expression = "userid = '{$userid}'";
+        $user_id = $_SESSION['login_user']['user_id'];
+        $expression = "user_id = '{$user_id}'";
         SQL::db_delete('inventorymanage', 'inventory', $expression);
         header("Location: {$inventoryPageUrl}");
     exit;

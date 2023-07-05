@@ -18,6 +18,10 @@ $profileUpdateUrl = "http://localhost/----/profileUpdate.php";
 $profileUpdatePageUrl = "http://localhost/----/profileUpdatePage.php";
 $signupUrl = "http://localhost/----/signup.php";
 $signupPageUrl = "http://localhost/----/signupPage.php";
-
-
-
+$communityUrl = "http://localhost/----/community.php";
+$communityPageUrl = "http://localhost/----/communityPage.php";
+$communityCreateUrl = "http://localhost/----/communityCreatePage.php";
+$communityCreatePageUrl = "http://localhost/----/communityCreatePage.php";
+$communityUpdateUrl = "http://localhost/----/communityUpdatePage.php";
+$communityUpdatePageUrl = "http://localhost/----/communityUpdate.php";
+$communityDeleteUrl = "http://localhost/----/communityDelete.php";

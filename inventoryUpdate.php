@@ -13,7 +13,7 @@ if(!empty($_GET))
 }
 
 
-if(!empty($_SESSION['login_user']['userid']) && isset($_POST['inventory_update']))
+if(!empty($_SESSION['login_user']['user_id']) && isset($_POST['inventory_update']))
 {
     try
     {
@@ -34,12 +34,12 @@ if(!empty($_SESSION['login_user']['userid']) && isset($_POST['inventory_update']
             exit;
         }
 
-        $userid = $_SESSION['login_user']['userid'];
+        $user_id = $_SESSION['login_user']['user_id'];
         $inventoryId = $_POST['data'];
         $inventory['ingredientname'] = $_POST['ingredientname'];
         $inventory['deadline'] = $_POST['deadline'];
         $inventory['amount'] = $_POST['amount'];
-        $expression = "inventory_id = {$inventoryId} and userid = '{$userid}'";
+        $expression = "inventory_id = {$inventoryId} and user_id = '{$user_id}'";
 
         SQL::db_update('inventorymanage', 'inventory', $inventory, $expression);
         header("Location: {$inventoryPageUrl}");
