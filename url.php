@@ -25,3 +25,7 @@ $communityCreatePageUrl = "http://localhost/----/communityCreatePage.php";
 $communityUpdateUrl = "http://localhost/----/communityUpdatePage.php";
 $communityUpdatePageUrl = "http://localhost/----/communityUpdate.php";
 $communityDeleteUrl = "http://localhost/----/communityDelete.php";
+$communityDetailUrl = "http://localhost/----/communityDetail.php";
+$communityDetailPageUrl = "http://localhost/----/communityDetailPage.php";
+$communityUpdateUrl = "http://localhost/----/communityUpdate.php";
+$communityUpdatePageUrl = "http://localhost/----/communityUpdatePage.php";

@@ -1,135 +1,47 @@
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Line風レイアウト</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
-    <style>
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .header {
-            padding: 20px;
-            background-color: #00b900;
-            color: #fff;
-            text-align: center;
-        }
-
-        .chat-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .chat {
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .chat .message-bubble {
-            background-color: #eee;
-            padding: 10px 15px;
-            border-radius: 10px;
-            max-width: 70%;
-            word-wrap: break-word;
-        }
-
-        .chat .sender {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .chat .triangle {
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            margin-top: 10px;
-        }
-
-        .chat.left .triangle {
-            border-top: 10px solid #eee;
-            margin-right: 5px;
-        }
-
-        .chat.right .triangle {
-            border-top: 10px solid #eee;
-            margin-left: 5px;
-        }
-
-        .chat .icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-
-        .chat.left .icon {
-            margin-right: 10px;
-        }
-
-        .chat.right .icon {
-            margin-left: 10px;
-        }
-
-        .message-input {
-            flex: 1;
-        }
-
-        .send-button {
-            margin-left: 10px;
-        }
-
-        .chat-box {
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .message-area {
-            flex: 1;
-            margin-right: 10px;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>Line風レイアウト</h1>
-        </div>
-        <div class="chat-container">
-            <div class="chat left">
-                <img class="icon" src="icon/user1.jpg" alt="アイコン">
-                <div class="message-area">
-                    <div class="message-bubble">
-                        <div class="sender">John</div>
-                        <div class="message">Hello, how are you?</div>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 ">
+            <!-- チャットメッセージの表示領域 -->
+            <div class="chat-messages">
+            <div class="message d-flex" style="margin: 30px">
+                <img src="user_icon/botti1.jpg" alt="Avatar" class="rounded-circle" width="75" height="75">
+                <div class="message-content">
+                    <div class="message-header d-flex">
+                        <h6 class="message-sender" style="margin: 5px;">Jane Smith</h6>
+                        <h6 class="message-time" style="margin: 5px;">10:05 AM</h6>
                     </div>
-                    <div class="triangle"></div>
+                    <div class="message-text" style="margin: 5px;">
+                        I'm good, thank you!dsfffsdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaｓｆｓｆさあああああああああああああああああああああああああああああああああああああああああああああ
+                    </div>
                 </div>
             </div>
-            <div class="chat right">
-                <div class="message-area">
-                    <div class="message-bubble">
-                        <div class="sender">Jane</div>
-                        <div class="message">I'm good, thanks! How about you?</div>
+            <hr>
+            <div class="message d-flex" style="margin: 30px">
+                <img src="user_icon/botti1.jpg" alt="Avatar" class="rounded-circle" width="75" height="75">
+                <div class="message-content">
+                    <div class="message-header d-flex">
+                        <h6 class="message-sender" style="margin: 5px;">Jane Smith</h6>
+                        <h6 class="message-time" style="margin: 5px;">10:05 AM</h6>
                     </div>
-                    <div class="triangle"></div>
+                    <div class="message-text" style="margin: 5px;">
+                        I'm good, thank you!
+                    </div>
                 </div>
-                <img class="icon" src="icon/user2.jpg" alt="アイコン">
             </div>
-        </div>
-        <div class="d-flex align-items-center justify-content-end">
-            <input class="form-control message-input" type="text" placeholder="メッセージを入力">
-            <button class="btn btn-primary send-button">送信</button>
+            <hr>
+            <div class="message d-flex" style="margin: 30px">
+                <img src="user_icon/botti1.jpg" alt="Avatar" class="rounded-circle" width="75" height="75">
+                <div class="message-content">
+                    <div class="message-header d-flex">
+                        <h6 class="message-sender" style="margin: 5px;">Jane Smith</h6>
+                        <h6 class="message-time" style="margin: 5px;">10:05 AM</h6>
+                    </div>
+                    <div class="message-text" style="margin: 5px;">
+                        I'm good, thank you!
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <hr>
-
-</body>
-
-</html>
+</div>

@@ -20,7 +20,7 @@ require_once __DIR__ . '/communityJS.php';
 </head>
 
 <body>
-    <?php //if (!empty($_SESSION['login_user']['user_id'])) { 
+    <?php if (!empty($_SESSION['login_user']['user_id'])) {
     ?>
     <div class="container">
         <div class="processing d-flex justify-content-center">
@@ -43,27 +43,30 @@ require_once __DIR__ . '/communityJS.php';
                 <a href="<?= $communityCreatePageUrl ?>"><button class="btn btn-primary">コミュニティ作成</button></a>
             </div>
         </div>
-        <?php foreach ($communitydata as $v) { ?>
-        <div class="card comunity-card" style="width: 70%;">
-            <div class="row no-gutters align-items-center">
-                <div class="col-md-4">
-                    <img src="<?= !empty($v['imagepath']) ? $v['imagepath'] : 'community_icon\no_image.jpg' ?>" class="card-img" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title"><?= h($v['title']) ?></h5>
-                        <p class="card-text"><?= h($v['description']) ?></p>
-                        <a href="#">コミュニティに入る</a>
+        <div id="community-list">
+            <?php foreach ($communitydata as $v) { ?>
+                <div class="card community-card" id="community-card" style="width: 70%;">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col-md-4">
+                            <img src="<?= !empty($v['imagepath']) ? $v['imagepath'] : 'community_icon\no_image.jpg' ?>" class="card-img" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h2 class="card-title"><?= !empty($v['title']) ? h($v['title']) : '' ?></h2>
+                                <h6 class="card-genre"><?= !empty($v['genre']) ? h($v['genre']) : '' ?></h6>
+                                <p class="card-text"><?=!empty($v['description']) ? h($v['description']) : '' ?></p>
+                                <a href="<?=$communityDetailPageUrl?>?data=<?=$v['community_id']?>">コミュニティに入る</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php } ?>
         </div>
-        <?php } ?>
     </div>
-    <?php // } else {
+    <?php } else {
     ?>
-    <!--<div class="recommend-message">ログインしてください。</div> -->
-    <?php // }
+        <div class="recommend-message">ログインしてください。</div>
+    <?php }
     ?>
 </body>
 

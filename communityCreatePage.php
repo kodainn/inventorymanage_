@@ -22,7 +22,7 @@ require_once __DIR__ . '/communityCreateJS.php';
         <div class="container">
             <div class="form-wrap">
                 <div class="community-create">
-                    <form action="<?= $communityCreateUrl ?>" method="post">
+                    <form action="<?= $communityCreateUrl ?>" method="post" enctype="multipart/form-data">
                         <?php if (!empty($_SESSION['formVaridate'])) { ?>
                             <div class="alert alert-danger" style="text-align: left;" role="alert">
                                 <ul>

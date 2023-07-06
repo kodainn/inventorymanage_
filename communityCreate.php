@@ -25,7 +25,7 @@ if( !empty($_SESSION['login_user']['user_id']) && isset($_POST['community_create
         $community['title'] = $_POST['title'];
         $community['genre'] = $_POST['genre'];
         !empty($_POST['description']) ? $community['description'] = $_POST['description'] : '';
-        !empty($_POST['imagepath']) ? $community['imagepath'] = $_POST['imagepath'] : '';
+        !empty($filepath) ? $community['imagepath'] = $filepath : '';
         SQL::db_insert('inventorymanage', 'community', $community);
         header("Location: {$communityPageUrl}");
         exit;

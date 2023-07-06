@@ -7,8 +7,9 @@ if (!empty($_SESSION['login_user']['user_id']))
     try
     {
         $user_id = $_SESSION['login_user']['user_id'];
-        $expression = "1 order by user_id = '{$user_id}' desc, create_date desc";
-        $communitydata = SQL::db_fetchAll('inventorymanage', 'community', $expression);
+        $community_id = $_GET['data'];
+        $expression = "community_id = {$community_id} order create_date desc";
+        $communitydata = SQL::db_fetchAll('inventorymanage', 'message', $expression);
     } catch(PDOException $e)
     {
         echo 'データベースエラー' . $e->getMessage();

@@ -38,8 +38,7 @@ if(isset($_POST['profile-update']))
         !empty($_POST['nickname']) ? $user['nickname'] = $_POST['nickname'] : '';
         !empty($_POST['gender']) ? $user['gender'] = $_POST['gender'] : '';
         !empty($_POST['birthdate']) ? $user['birthdate'] = $_POST['birthdate'] : '';
-        !empty($_POST['imagepath']) ? $user['nickname'] = $_POST['nickname'] : '';
-
+        !empty($filepath) ? $user['imagepath'] = $filepath : '';
 
         $expression = "user_id = '{$user_id}'";
         SQL::db_update('inventorymanage', 'userdata', $user, $expression);
