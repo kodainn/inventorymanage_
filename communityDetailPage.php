@@ -19,16 +19,13 @@ require_once __DIR__ . '/communityDetail.php';
 </head>
 
 <body>
-    <?php if (!empty($_SESSION['login_user']['user_id'])) {
-    ?>
-    <div class="container">
-
-    </div>
-    <?php  } else {
-    ?>
+    <?php if (!empty($_SESSION['login_user']['user_id'])) { ?>
+        <div class="container">
+            
+        </div>
+    <?php  } else { ?>
         <div class="recommend-message">ログインしてください。</div>
-    <?php  }
-    ?>
+    <?php  } ?>
 </body>
 
 </html>

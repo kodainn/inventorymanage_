@@ -81,3 +81,16 @@ a.update:hover {
 a.delete:hover {
 	color: maroon;
 }
+
+.message-button {
+	margin-top: 162px;
+}
+
+.message-textarea {
+	resize: none;
+	overflow: hidden;
+}
+
+.message-submit {
+	
+}
