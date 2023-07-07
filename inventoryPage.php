@@ -7,6 +7,8 @@ require_once __DIR__ . '/inventory.php';
 require_once __DIR__ . '/url.php';
 require_once __DIR__ . '/inventoryJS.php';
 ?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -76,8 +78,6 @@ require_once __DIR__ . '/inventoryJS.php';
                     </tbody>
                 </table>
             </div>
-
-
         </div>
     <?php } else { ?>
         <div class="recommend-message">ログインしてください。</div>
