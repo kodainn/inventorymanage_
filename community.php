@@ -2,15 +2,19 @@
 require_once __DIR__ . '/SQL.php';
 require_once __DIR__ . '/Func.php';
 
-if (!empty($_SESSION['login_user']['user_id']))
+try
 {
-    try
+    if(!empty($_SESSION['login_user']['user_id']))
     {
         $user_id = $_SESSION['login_user']['user_id'];
-        $expression = "1 order by user_id = '{$user_id}' desc, create_date desc";
-        $communitydata = SQL::db_fetchAll('inventorymanage', 'community', $expression);
-    } catch(PDOException $e)
+        $loginUserCondtion = "1 order by user_id = '{$user_id}' desc, create_date desc";
+        $communitydata = SQL::db_fetchAll('inventorymanage', 'community', $loginUserCondtion);
+    } else
     {
-        echo 'データベースエラー' . $e->getMessage();
+        $noLoginUserCondtion = "1 order by create_date desc";
+        $communitydata = SQL::db_fetchAll('inventorymanage', 'community', $noLoginUserCondtion);
     }
+}
+catch (PDOException $e) {
+    echo 'データベースエラー' . $e->getMessage();
 }

@@ -82,6 +82,10 @@ a.delete:hover {
 	color: maroon;
 }
 
+.message-area {
+	margin-bottom: 200px;
+}
+
 .message-button {
 	margin-top: 112px;
 }
@@ -92,5 +96,6 @@ a.delete:hover {
 }
 
 .message-submit {
-	
+	margin-top: 50px;
+	margin-bottom: 50px;
 }

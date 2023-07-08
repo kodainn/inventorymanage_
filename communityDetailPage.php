@@ -19,46 +19,59 @@ require_once __DIR__ . '/communityDetail.php';
 </head>
 
 <body>
-    <?php if (!empty($_SESSION['login_user']['user_id'])) { ?>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10">
-                    <!-- チャットメッセージの表示領域 -->
-                    <div class="chat-messages">
-                        <div class="message d-flex" style="margin-top: 30px">
-                            <img src="user_icon/botti1.jpg" alt="Avatar" class="rounded-circle" width="50" height="50">
-                            <div class="message-content">
-                                <div class="message-header d-flex">
-                                    <h6 class="message-sender" style="margin: 5px;">Jane Smith</h6>
-                                    <h6 class="message-time" style="margin: 5px;">10:05 AM</h6>
-                                </div>
-                                <div class="message-text" style="margin: 5px;">
-                                    I'm good, thank you!dsfffsdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaさあああああああああああああああああああああああああああああああああああああああああああああ
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="message-submit">
+    <div class="container">
+        <?php if ($existsCommunity) { ?>
+            <?php if (!empty($_SESSION['login_user']['user_id'])) { ?>
+                <div class="message-submit">
+                    <form action="<?=$communityDetailUrl?>" method="post">
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="input-group">
-                                    <textarea class="form-control message-textarea" placeholder="メッセージを入力してください" rows="3" style="height: 150px"></textarea>
+                                    <textarea class="form-control message-textarea" placeholder="メッセージを入力してください" rows="3" name="sentence" style="height: 150px"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="input-group">
-                                    <button class="btn btn-primary btn-block message-button" type="button">メッセージ送信</button>
+                                    <button class="btn btn-primary btn-block message-button" type="submit" name="message-create">メッセージ送信</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
+                </div>
+            <?php } else { ?>
+                <h3 style="margin: 50px;">ログインしたら投稿できます。</h3>
+            <?php } ?>
+            <div class="row message-area">
+                <div class="col-lg-10">
+                    <!-- チャットメッセージの表示領域 -->
+                    <?php if (!empty($messagedata)) { ?>
+                        <div class="chat-messages">
+                            <?php foreach ($messagedata as $v) { ?>
+                                <hr>
+                                <div class="message d-flex" style="margin-top: 30px">
+                                    <img src="user_icon/botti1.jpg" alt="Avatar" class="rounded-circle" width="50" height="50">
+                                    <div class="message-content">
+                                        <div class="message-header d-flex">
+                                            <h6 class="message-sender" style="margin: 5px;"><?= !empty($v['nickname']) ? h($v['nickname']) : '' ?></h6>
+                                            <h6 class="message-time" style="margin: 5px;"><?= !empty($v['create_date']) ? h(date('Y年n月j日 h時i分s秒', strtotime($v['create_date']))) : '' ?></h6>
+                                        </div>
+                                        <div class="message-text" style="margin: 5px;">
+                                            <?= !empty($v['sentence']) ? h($v['sentence']) : '' ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    <?php } else { ?>
+                        <hr>
+                        <p>投稿がありません。</p>
+                    <?php } ?>
                 </div>
             </div>
-        </div>
-    <?php  } else { ?>
-        <div class="recommend-message">ログインしてください。</div>
-    <?php  } ?>
+        <?php  } else { ?>
+            <div class="recommend-message">コミュニティが存在しません。</div>
+        <?php  } ?>
+    </div>
 </body>
 
 </html>

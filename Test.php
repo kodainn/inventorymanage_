@@ -23,7 +23,7 @@
         </div>
         <div class="row mb-5">
             <div class="col-2">
-                <button type="button" class="btn btn-primary mb-12" data-toggle="modal" data-target="#submit-box">ボタンで開く</button>
+                <button type="button" class="btn btn-primary mb-12" data-toggle="modal" data-target="#submit-box">投稿する</button>
             </div>
         </div>
     </div>
@@ -35,12 +35,14 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">投稿</h5>
                 </div>
-                <div class="modal-body">
-                    <textarea class="form-control message-textarea" style="height: 300px" placeholder="メッセージを入力してください"></textarea>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">メッセージ送信</button>
-                </div>
+                <form>
+                    <div class="modal-body">
+                        <textarea class="form-control message-textarea" style="height: 300px" placeholder="メッセージを入力してください"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">メッセージ送信</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

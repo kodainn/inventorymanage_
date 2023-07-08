@@ -10,6 +10,52 @@ class SQL
         return new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     }
 
+    public static function db_aliasFetch(string $dbname, string $tblname, array $alias, string $expression = "1", string $join = "")
+    {
+        $rtn = '';
+        $pdo = SQL::db_connect($dbname);
+        $columns = "";
+        $lastAlias = end($alias);
+        foreach($alias as $a)
+        {
+            if($lastAlias === $a)
+            {
+                $columns .= "{$a}";
+                continue;
+            }
+            $columns .= "{$a},";
+        }
+
+        $fetchSql = "select {$columns} from $tblname {$join} where $expression";
+        $stmt = $pdo->prepare($fetchSql);
+        $stmt->execute();
+        $rtn = $stmt->fetch();
+        return $rtn;
+    }
+
+    public static function db_aliasFetchAll(string $dbname, string $tblname, array $alias, string $expression = "1", string $join = "")
+    {
+        $rtn = '';
+        $pdo = SQL::db_connect($dbname);
+        $columns = "";
+        $lastAlias = end($alias);
+        foreach($alias as $a)
+        {
+            if($lastAlias === $a)
+            {
+                $columns .= "{$a}";
+                continue;
+            }
+            $columns .= "{$a},";
+        }
+
+        $fetchSql = "select {$columns} from $tblname {$join} where $expression";
+        $stmt = $pdo->prepare($fetchSql);
+        $stmt->execute();
+        $rtn = $stmt->fetchAll();
+        return $rtn;
+    }
+
     public static function db_fetch(string $dbname, string $tblname, string $expression = "1", string $join = "")
     {
         $rtn = '';
@@ -21,7 +67,7 @@ class SQL
         return $rtn;
     }
 
-    public static function db_fetchAll(string $dbname, string $tblname, string $expression = "1", int $limit = 0, string $join = "")
+    public static function db_fetchAll(string $dbname, string $tblname, string $expression = "1", string $join = "")
     {
         $rtn = '';
         $pdo = SQL::db_connect($dbname);
@@ -29,13 +75,18 @@ class SQL
         $stmt = $pdo->prepare($fetchSql);
         $stmt->execute();
         $rtn = $stmt->fetchAll();
-        if ($limit > 0) {
-            $tmp_result = $rtn;
-            $rtn = [];
-            for ($i = 0; $i < $limit; $i++) {
-                $rtn[] = $tmp_result[$i];
-            }
-        }
+        return $rtn;
+    }
+
+    public static function db_getcount(string $dbname, string $tblname, $expression)
+    {
+        $rtn = 0;
+        $pdo = SQL::db_connect($dbname);
+        $getcountSql = "select count(*) from {$tblname} where {$expression}";
+        $stmt = $pdo->prepare($getcountSql);
+        $stmt->execute();
+        $rtnAlias = $stmt->fetch();
+        $rtn = $rtnAlias[0];
         return $rtn;
     }
 
