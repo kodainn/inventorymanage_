@@ -56,6 +56,9 @@ require_once __DIR__ . '/communityJS.php';
                                 <h6 class="card-genre"><?= !empty($v['genre']) ? h($v['genre']) : '' ?></h6>
                                 <p class="card-text"><?= !empty($v['description']) ? h($v['description']) : '' ?></p>
                                 <a href="<?= $communityDetailPageUrl ?>?data=<?= $v['community_id'] ?>">コミュニティに入る</a>
+                                <?php if(!empty($_SESSION['login_user']['user_id']) && $_SESSION['login_user']['user_id'] === $v['user_id']) { ?>
+                                    <a href="<?= $communityUpdatePageUrl ?>?data=<?= $v['community_id']?>" style="margin-left: 20px">コミュニティ情報を更新する</a>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>

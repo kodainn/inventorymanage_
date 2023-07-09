@@ -5,7 +5,7 @@ require_once __DIR__ . '/url.php';
 require_once __DIR__ . '/init.php';
 require_once __DIR__ . '/header.php';
 require_once __DIR__ . '/profileUpdate.php';
-require_once __DIR__ . '/profileJS.php';
+require_once __DIR__ . '/pictureJS.php';
 ?>
 <!DOCTYPE html>
 <html lang="ja">

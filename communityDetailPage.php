@@ -20,10 +20,11 @@ require_once __DIR__ . '/communityDetail.php';
 
 <body>
     <div class="container">
+
         <?php if ($existsCommunity) { ?>
             <?php if (!empty($_SESSION['login_user']['user_id'])) { ?>
                 <div class="message-submit">
-                    <form action="<?=$communityDetailUrl?>" method="post">
+                    <form id="message-form" action="<?=$communityDetailUrl?>" method="post">
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="input-group">
@@ -49,7 +50,7 @@ require_once __DIR__ . '/communityDetail.php';
                             <?php foreach ($messagedata as $v) { ?>
                                 <hr>
                                 <div class="message d-flex" style="margin-top: 30px">
-                                    <img src="user_icon/botti1.jpg" alt="Avatar" class="rounded-circle" width="50" height="50">
+                                    <img src="<?=!empty($v['imagepath']) ? h($v['imagepath']) : 'user_icon/init_icon.png'?>" alt="Avatar" class="rounded-circle" width="50" height="50">
                                     <div class="message-content">
                                         <div class="message-header d-flex">
                                             <h6 class="message-sender" style="margin: 5px;"><?= !empty($v['nickname']) ? h($v['nickname']) : '' ?></h6>

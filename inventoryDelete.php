@@ -12,7 +12,7 @@ if(!empty($_SESSION['login_user']['user_id']) && !empty($_GET['data']))
         $expression = "inventory_id = {$inventoryId} and user_id = '{$user_id}'";
         SQL::db_delete('inventorymanage', 'inventory', $expression);
         header("Location: {$inventoryPageUrl}");
-    exit;
+        exit;
     } catch(PDOException $e)
     {
         echo 'データベースエラー' . $e->getMessage();

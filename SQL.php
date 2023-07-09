@@ -71,18 +71,18 @@ class SQL
     {
         $rtn = '';
         $pdo = SQL::db_connect($dbname);
-        $fetchSql = "select * from $tblname {$join} where $expression";
+        $fetchSql = "select * from {$tblname} {$join} where $expression";
         $stmt = $pdo->prepare($fetchSql);
         $stmt->execute();
         $rtn = $stmt->fetchAll();
         return $rtn;
     }
 
-    public static function db_getcount(string $dbname, string $tblname, $expression)
+    public static function db_getcount(string $dbname, string $tblname, string $expression = "1", $join = "")
     {
         $rtn = 0;
         $pdo = SQL::db_connect($dbname);
-        $getcountSql = "select count(*) from {$tblname} where {$expression}";
+        $getcountSql = "select count(*) from {$tblname} {$join} where {$expression}";
         $stmt = $pdo->prepare($getcountSql);
         $stmt->execute();
         $rtnAlias = $stmt->fetch();

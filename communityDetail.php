@@ -57,7 +57,7 @@ if($existsCommunity)
 {
     try
     {
-        $messageColumns = ['nickname', 'sentence', 'create_date'];
+        $messageColumns = ['nickname', 'sentence', 'imagepath', 'create_date'];
         $messageCondition = "community_id = {$community_id} order by create_date desc";
         $messageJoin = "msg inner join userdata ud on msg.user_id = ud.user_id";
         $messagedata = SQL::db_aliasFetchAll('inventorymanage', 'message', $messageColumns, $messageCondition, $messageJoin);
