@@ -8,7 +8,7 @@
             var confirmDelete = confirm('本当に削除しますか？');
             if (confirmDelete)
             {
-                location.href = "http://localhost/----/communityDelete.php";
+                location.href = "http://localhost/inventorymanage_/communityDelete.php";
             }
         });
     });
